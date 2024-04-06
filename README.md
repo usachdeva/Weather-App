@@ -20,8 +20,8 @@ I need a site/app to get me updated with the weather nearby.
 ## links
 
 ```
-Repo:
-Deployed:
+Repo: https://github.com/usachdeva/Weather-App
+Deployed: https://usachdeva.github.io/Weather-App/
 ```
 
 ## Screenshot
