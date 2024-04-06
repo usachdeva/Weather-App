@@ -1,0 +1,42 @@
+.navbar {
+  background-color: purple;
+  color: white;
+}
+
+label {
+  font-weight: bolder;
+  font-size: 28px;
+  margin: 2px;
+}
+
+#search-bar {
+  border-bottom: 1px solid grey;
+}
+
+#required-city {
+  margin: 1px;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+.card .card-body-dates {
+  background-color: #00877a;
+  color: white;
+}
+
+h1,
+h2,
+h5 {
+  font-weight: bolder;
+}
+
+footer {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+}
