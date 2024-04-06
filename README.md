@@ -26,3 +26,5 @@ Deployed: https://usachdeva.github.io/Weather-App/
 ```
 
 ## Screenshot
+
+![alt text](assets/images/screenshot.png)
