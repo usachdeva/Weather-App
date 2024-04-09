@@ -30,7 +30,7 @@
                         <label for="formGroupExampleInput" class="form-label">Search for a
                             City:</label>
                         <input type="text" class="form-control mb-3" id="search" placeholder="San Diego">
-                        <button id="submit" class="btn btn-primary d-grid gap-2 col-12 mx-auto"
+                        <button id="search-city" class="btn btn-primary d-grid gap-2 col-12 mx-auto"
                             type="submit">Search</button>
                     </div>
 
@@ -48,10 +48,14 @@
                 <div class="col-md-8">
                     <div class="card-body">
                         <div id="required-city">
-                            <h2>Atlanta <span id="today-date"></span> <i></i></h2>
-                            <p id="city-temp">Temp:</p>
-                            <p id="city-wind">Wind:</p>
-                            <p id="city-humidity">Humidity:</p>
+                            <h2> <span id="today-date"></span>
+                                <i></i>
+                            </h2>
+                            <p>Temp:<span id="city-temp"></span>
+
+                            </p>
+                            <p>Wind:<span id="city-wind"> </span></p>
+                            <p>Humidity:<span id="city-humidity"> </span></p>
                         </div>
                         <h5 class="card-title mt-3 mb-1">5-Day Forecast:</h5>
                         <!-- weather days -->
@@ -61,9 +65,9 @@
                                     <div class="card-body-dates px-2">
                                         <h5>Atlanta</h5>
                                         <p>icon</p>
-                                        <p id="city-temp">Temp:</p>
-                                        <p id="city-wind">Wind:</p>
-                                        <p id="city-humidity">Humidity:</p>
+                                        <p>Temp:<span id="city-temp1"></span></p>
+                                        <p>Wind:<span id="city-wind1"></span></p>
+                                        <p>Humidity:<span id="city-humidity1"></span></p>
                                     </div>
                                 </div>
                             </div>
@@ -72,9 +76,9 @@
                                     <div class="card-body-dates px-2">
                                         <h5>Atlanta</h5>
                                         <p>icon</p>
-                                        <p id="city-temp">Temp:</p>
-                                        <p id="city-wind">Wind:</p>
-                                        <p id="city-humidity">Humidity:</p>
+                                        <p id="city-temp1">Temp:</p>
+                                        <p id="city-wind1">Wind:</p>
+                                        <p id="city-humidity1">Humidity:</p>
                                     </div>
                                 </div>
                             </div>
@@ -83,9 +87,9 @@
                                     <div class="card-body-dates px-2">
                                         <h5>Atlanta</h5>
                                         <p>icon</p>
-                                        <p id="city-temp">Temp:</p>
-                                        <p id="city-wind">Wind:</p>
-                                        <p id="city-humidity">Humidity:</p>
+                                        <p id="city-temp1">Temp:</p>
+                                        <p id="city-wind1">Wind:</p>
+                                        <p id="city-humidity1">Humidity:</p>
                                     </div>
                                 </div>
                             </div>
@@ -94,9 +98,9 @@
                                     <div class="card-body-dates px-2 ">
                                         <h5>Atlanta</h5>
                                         <p>icon</p>
-                                        <p id="city-temp">Temp:</p>
-                                        <p id="city-wind">Wind:</p>
-                                        <p id="city-humidity">Humidity:</p>
+                                        <p id="city-temp1">Temp:</p>
+                                        <p id="city-wind1">Wind:</p>
+                                        <p id="city-humidity1">Humidity:</p>
                                     </div>
                                 </div>
                             </div>
@@ -105,9 +109,9 @@
                                     <div class="card-body-dates px-2">
                                         <h5>Atlanta</h5>
                                         <p>icon</p>
-                                        <p id="city-temp">Temp:</p>
-                                        <p id="city-wind">Wind:</p>
-                                        <p id="city-humidity">Humidity:</p>
+                                        <p id="city-temp1">Temp:</p>
+                                        <p id="city-wind1">Wind:</p>
+                                        <p id="city-humidity1">Humidity:</p>
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +134,7 @@
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.7/dayjs.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.7/dayjs.min.js"></script> -->
     <script src="./assets/js/script.js"></script>
 </body>
 

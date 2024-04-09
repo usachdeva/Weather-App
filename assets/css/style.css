@@ -40,3 +40,7 @@ a {
   font-weight: bold;
   font-size: 18px;
 }
+
+#required-city span {
+  font-weight: bolder;
+}
