@@ -16,6 +16,7 @@ const formSubmitHandler = (event) => {
 
     if (cityName) {
         inputCityWeather(cityName);
+        fiveDayForecast(cityName);
         cityInput.value = "";
     } else {
         alert("Enter the city name");
@@ -57,6 +58,8 @@ const inputCityWeather = (cityName) => {
 
                 cityHeadCard.append(dateText);
                 cityHeadCard.append(icon);
+
+                fiveDayForecast(cityName);
             });
         } else {
             alert("error in city name");
@@ -65,11 +68,11 @@ const inputCityWeather = (cityName) => {
 };
 
 // for 5-day forecast
-const fiveDayForecast = () => {
-    let fiveDay =
-        "https://api.openweathermap.org/data/2.5/forecast?q=toronto&appid=cc1961620c07d9c2d3b1a593bf9ec1b1";
+const fiveDayForecast = (cityName) => {
+    const fiveDay = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}`;
+    const fiveDayUrl = fiveDay + `&appid=${apiKey}`;
 
-    fetch(fiveDay)
+    fetch(fiveDayUrl)
         .then(function (response) {
             return response.json();
         })
@@ -121,7 +124,7 @@ const fiveDayForecast = () => {
         });
 };
 
-fiveDayForecast();
+// fiveDayForecast();
 
 // search button
 searchBtn.addEventListener("click", formSubmitHandler);
@@ -129,6 +132,10 @@ searchBtn.addEventListener("click", formSubmitHandler);
 // weather for different buttons with cities
 cityBtn.forEach((button) => {
     button.addEventListener("click", function () {
+        event.preventDefault();
+
+        rowDiv.innerHTML = "";
+
         const buttonText = this.textContent;
         inputCityWeather(buttonText);
     });
