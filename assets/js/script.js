@@ -5,6 +5,8 @@ const cityTemp = document.querySelector("#city-temp");
 const cityWind = document.querySelector("#city-wind");
 const cityHumidity = document.querySelector("#city-humidity");
 
+const apiKey = `cc1961620c07d9c2d3b1a593bf9ec1b1`;
+
 const formSubmitHandler = (event) => {
     event.preventDefault();
 
@@ -21,7 +23,6 @@ const formSubmitHandler = (event) => {
 const selectedCityWeather = (cityName) => {
     cityHeadCard.textContent = cityName.toUpperCase();
 
-    const apiKey = `cc1961620c07d9c2d3b1a593bf9ec1b1`;
     const baseUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric`;
     const userUrl = baseUrl + `&appid=${apiKey}`;
 
@@ -34,6 +35,14 @@ const selectedCityWeather = (cityName) => {
                 cityHumidity.textContent = ` ${data.main.humidity} %`;
                 console.log(data.weather[0].icon);
 
+                // adding date
+                const dateText = document.createElement("span");
+                dateText.setAttribute("id", "today-date");
+                const dateTextContent = dayjs
+                    .unix(data.dt)
+                    .format("DD/MM/YYYY");
+                dateText.textContent = dateTextContent;
+
                 // creating the icon
                 const icon = document.createElement("img");
 
@@ -44,6 +53,7 @@ const selectedCityWeather = (cityName) => {
                 );
                 icon.setAttribute("alt", "Example Image");
 
+                cityHeadCard.append(dateText);
                 cityHeadCard.append(icon);
             });
         } else {
@@ -52,4 +62,9 @@ const selectedCityWeather = (cityName) => {
     });
 };
 
+// for 5-day forecast
+
 searchBtn.addEventListener("click", formSubmitHandler);
+
+// checking dayjs
+console.log(dayjs.unix(1712797734).format("DD/MM/YYYY"));

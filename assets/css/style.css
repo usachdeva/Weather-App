@@ -52,3 +52,11 @@ img {
     position: relative;
     top: -3px;
 }
+
+h2 span {
+    font-weight: normal;
+    font-size: 25px;
+    margin: 2px;
+    padding: 10px;
+    color: red;
+}
