@@ -69,7 +69,7 @@ const inputCityWeather = (cityName) => {
 
 // for 5-day forecast
 const fiveDayForecast = (cityName) => {
-    const fiveDay = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}`;
+    const fiveDay = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=imperial`;
     const fiveDayUrl = fiveDay + `&appid=${apiKey}`;
 
     fetch(fiveDayUrl)
@@ -101,13 +101,13 @@ const fiveDayForecast = (cityName) => {
                     cardHeadText.textContent = currentDate;
 
                     let cardTempText = document.createElement("p");
-                    cardTempText.textContent = "hello temp";
+                    cardTempText.textContent = `Temp: ${list.main.temp} F`;
 
                     let cardWindText = document.createElement("p");
-                    cardWindText.textContent = "hello wind";
+                    cardWindText.textContent = `Wind: ${list.wind.speed} MPH`;
 
                     let cardHumidityText = document.createElement("p");
-                    cardHumidityText.textContent = "hello humidity";
+                    cardHumidityText.textContent = `Humidity: ${list.main.humidity}%`;
 
                     cardBody.appendChild(cardHeadText);
                     cardBody.appendChild(cardTempText);
@@ -123,8 +123,6 @@ const fiveDayForecast = (cityName) => {
             }
         });
 };
-
-// fiveDayForecast();
 
 // search button
 searchBtn.addEventListener("click", formSubmitHandler);
