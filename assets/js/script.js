@@ -5,6 +5,7 @@ const cityTemp = document.querySelector("#city-temp");
 const cityWind = document.querySelector("#city-wind");
 const cityHumidity = document.querySelector("#city-humidity");
 const cityBtn = document.querySelectorAll(".city-btn");
+const rowDiv = document.querySelector(".row-cols-1");
 
 const apiKey = `cc1961620c07d9c2d3b1a593bf9ec1b1`;
 
@@ -24,17 +25,17 @@ const formSubmitHandler = (event) => {
 const inputCityWeather = (cityName) => {
     cityHeadCard.textContent = cityName.toUpperCase();
 
-    const baseUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial`;
+    const baseUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=imperial`;
     const userUrl = baseUrl + `&appid=${apiKey}`;
 
     fetch(userUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
-                console.log(data);
+                // console.log(data);
                 cityTemp.textContent = ` ${data.main.temp} F`;
                 cityWind.textContent = ` ${data.wind.speed} MPH`;
                 cityHumidity.textContent = ` ${data.main.humidity} %`;
-                console.log(data.weather[0].icon);
+                // console.log(data.weather[0].icon);
 
                 // adding date
                 const dateText = document.createElement("span");
@@ -64,6 +65,63 @@ const inputCityWeather = (cityName) => {
 };
 
 // for 5-day forecast
+const fiveDayForecast = () => {
+    let fiveDay =
+        "https://api.openweathermap.org/data/2.5/forecast?q=toronto&appid=cc1961620c07d9c2d3b1a593bf9ec1b1";
+
+    fetch(fiveDay)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            let previousDate = "";
+
+            let lists = data.list;
+            for (let list of lists) {
+                let date = list.dt_txt;
+                let currentDate = dayjs(date).format("DD/MM/YYYY");
+                if (currentDate != previousDate) {
+                    console.log(currentDate);
+                    previousDate = currentDate;
+
+                    let columnDiv = document.createElement("div");
+                    columnDiv.classList.add("col");
+
+                    let cardDiv = document.createElement("div");
+                    cardDiv.classList.add("card");
+
+                    let cardBody = document.createElement("div");
+                    cardBody.classList.add("card-body-dates");
+
+                    let cardHeadText = document.createElement("h5");
+                    cardHeadText.textContent = currentDate;
+
+                    let cardTempText = document.createElement("p");
+                    cardTempText.textContent = "hello temp";
+
+                    let cardWindText = document.createElement("p");
+                    cardWindText.textContent = "hello wind";
+
+                    let cardHumidityText = document.createElement("p");
+                    cardHumidityText.textContent = "hello humidity";
+
+                    cardBody.appendChild(cardHeadText);
+                    cardBody.appendChild(cardTempText);
+                    cardBody.appendChild(cardWindText);
+                    cardBody.appendChild(cardHumidityText);
+
+                    cardDiv.appendChild(cardBody);
+
+                    columnDiv.appendChild(cardDiv);
+
+                    rowDiv.appendChild(columnDiv);
+                }
+            }
+        });
+};
+
+fiveDayForecast();
 
 // search button
 searchBtn.addEventListener("click", formSubmitHandler);
@@ -77,4 +135,17 @@ cityBtn.forEach((button) => {
 });
 
 // checking dayjs
-console.log(dayjs.unix(1712797734).format("DD/MM/YYYY"));
+// console.log(dayjs.unix(1712797734).format("DD/MM/YYYY"));
+
+// {
+/* <div class="col">
+                <div class="card h-100">
+                    <div class="card-body-dates px-2">
+                        <h5>Atlanta</h5>
+                        <p>Temp:<span id="city-temp1"></span></p>
+                        <p>Wind:<span id="city-wind1"></span></p>
+                        <p>Humidity:<span id="city-humidity1"></span></p>
+                    </div>
+                </div>
+            </div> */
+// }

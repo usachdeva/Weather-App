@@ -60,3 +60,11 @@ h2 span {
     padding: 10px;
     color: red;
 }
+
+.card {
+    height: 100%;
+}
+
+.card-body-dates {
+    padding-left: 10px;
+}
