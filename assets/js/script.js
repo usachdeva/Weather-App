@@ -32,6 +32,8 @@ const inputCityWeather = (cityName) => {
     fetch(userUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
+                rowDiv.innerHTML = "";
+
                 // console.log(data);
                 cityTemp.textContent = ` ${data.main.temp} F`;
                 cityWind.textContent = ` ${data.wind.speed} MPH`;
@@ -58,8 +60,6 @@ const inputCityWeather = (cityName) => {
 
                 cityHeadCard.append(dateText);
                 cityHeadCard.append(icon);
-
-                fiveDayForecast(cityName);
             });
         } else {
             alert("error in city name");
@@ -109,7 +109,17 @@ const fiveDayForecast = (cityName) => {
                     let cardHumidityText = document.createElement("p");
                     cardHumidityText.textContent = `Humidity: ${list.main.humidity}%`;
 
+                    const icon = document.createElement("img");
+
+                    icon.setAttribute("class", "wincon-day");
+                    icon.setAttribute(
+                        "src",
+                        `https://openweathermap.org/img/wn/${list.weather[0].icon}@2x.png`
+                    );
+                    icon.setAttribute("alt", "Example Image");
+
                     cardBody.appendChild(cardHeadText);
+                    cardBody.appendChild(icon);
                     cardBody.appendChild(cardTempText);
                     cardBody.appendChild(cardWindText);
                     cardBody.appendChild(cardHumidityText);
@@ -132,10 +142,10 @@ cityBtn.forEach((button) => {
     button.addEventListener("click", function () {
         event.preventDefault();
 
-        rowDiv.innerHTML = "";
-
         const buttonText = this.textContent;
         inputCityWeather(buttonText);
+
+        fiveDayForecast(buttonText);
     });
 });
 
