@@ -4,6 +4,7 @@ const cityHeadCard = document.querySelector("#required-city h2");
 const cityTemp = document.querySelector("#city-temp");
 const cityWind = document.querySelector("#city-wind");
 const cityHumidity = document.querySelector("#city-humidity");
+const cityBtn = document.querySelectorAll(".btn");
 
 const apiKey = `cc1961620c07d9c2d3b1a593bf9ec1b1`;
 
@@ -13,14 +14,14 @@ const formSubmitHandler = (event) => {
     const cityName = cityInput.value.trim().toLowerCase();
 
     if (cityName) {
-        selectedCityWeather(cityName);
+        inputCityWeather(cityName);
         cityInput.value = "";
     } else {
         alert("Enter the city name");
     }
 };
 
-const selectedCityWeather = (cityName) => {
+const inputCityWeather = (cityName) => {
     cityHeadCard.textContent = cityName.toUpperCase();
 
     const baseUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric`;
@@ -64,7 +65,16 @@ const selectedCityWeather = (cityName) => {
 
 // for 5-day forecast
 
+// search button
 searchBtn.addEventListener("click", formSubmitHandler);
+
+// weather for different buttons with cities
+cityBtn.forEach((button) => {
+    button.addEventListener("click", function () {
+        const buttonText = this.textContent;
+        inputCityWeather(buttonText);
+    });
+});
 
 // checking dayjs
 console.log(dayjs.unix(1712797734).format("DD/MM/YYYY"));
