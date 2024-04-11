@@ -6,36 +6,50 @@ const cityWind = document.querySelector("#city-wind");
 const cityHumidity = document.querySelector("#city-humidity");
 
 const formSubmitHandler = (event) => {
-  event.preventDefault();
+    event.preventDefault();
 
-  const cityName = cityInput.value.trim().toLowerCase();
+    const cityName = cityInput.value.trim().toLowerCase();
 
-  if (cityName) {
-    selectedCityWeather(cityName);
-    cityInput.value = "";
-  } else {
-    alert("Enter the city name");
-  }
+    if (cityName) {
+        selectedCityWeather(cityName);
+        cityInput.value = "";
+    } else {
+        alert("Enter the city name");
+    }
 };
 
 const selectedCityWeather = (cityName) => {
-  cityHeadCard.textContent = cityName.toUpperCase();
+    cityHeadCard.textContent = cityName.toUpperCase();
 
-  const baseUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=cc1961620c07d9c2d3b1a593bf9ec1b1`;
+    const apiKey = `cc1961620c07d9c2d3b1a593bf9ec1b1`;
+    const baseUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric`;
+    const userUrl = baseUrl + `&appid=${apiKey}`;
 
-  fetch(baseUrl).then(function (response) {
-    if (response.ok) {
-      response.json().then(function (data) {
-        console.log(data);
-        console.log(data.main);
-        cityTemp.textContent = ` ${data.main.temp}F`;
-        cityWind.textContent = ` ${data.wind.speed}MPH`;
-        cityHumidity.textContent = ` ${data.main.humidity}%`;
-      });
-    } else {
-      alert("error in city name");
-    }
-  });
+    fetch(userUrl).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (data) {
+                console.log(data);
+                cityTemp.textContent = ` ${data.main.temp} C`;
+                cityWind.textContent = ` ${data.wind.speed} MPH`;
+                cityHumidity.textContent = ` ${data.main.humidity} %`;
+                console.log(data.weather[0].icon);
+
+                // creating the icon
+                const icon = document.createElement("img");
+
+                icon.setAttribute("id", "wincon");
+                icon.setAttribute(
+                    "src",
+                    `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+                );
+                icon.setAttribute("alt", "Example Image");
+
+                cityHeadCard.append(icon);
+            });
+        } else {
+            alert("error in city name");
+        }
+    });
 };
 
 searchBtn.addEventListener("click", formSubmitHandler);
