@@ -25,7 +25,7 @@ const formSubmitHandler = (event) => {
 const inputCityWeather = (cityName) => {
     cityHeadCard.textContent = cityName.toUpperCase();
 
-    const baseUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=imperial`;
+    const baseUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial`;
     const userUrl = baseUrl + `&appid=${apiKey}`;
 
     fetch(userUrl).then(function (response) {
