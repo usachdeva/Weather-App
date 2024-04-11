@@ -18,7 +18,8 @@ SO they can plan accordingly.
 WHEN the user give the input to the weather dashboard,
 THEN the weather of that city will be shown.
 WHEN the user click on the button of the city,
-THEN the weather of the city will be shown.
+THEN the weather of the city will be shown,
+AND the cards for the city weather will be shown for different days.
 
 ```
 
