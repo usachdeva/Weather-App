@@ -6,8 +6,18 @@ const cityWind = document.querySelector("#city-wind");
 const cityHumidity = document.querySelector("#city-humidity");
 const cityBtn = document.querySelectorAll(".city-btn");
 const rowDiv = document.querySelector(".row-cols-1");
+const btnsDiv = document.querySelector("#city-buttons");
 
 const apiKey = `cc1961620c07d9c2d3b1a593bf9ec1b1`;
+
+// creating a search history button
+const addNewBtn = (city) => {
+    let newBtn = document.createElement("button");
+    newBtn.setAttribute("class", "btn btn-secondary my-2 city-btn");
+    newBtn.textContent = city;
+
+    btnsDiv.appendChild(newBtn);
+};
 
 const formSubmitHandler = (event) => {
     event.preventDefault();
@@ -18,6 +28,7 @@ const formSubmitHandler = (event) => {
         inputCityWeather(cityName);
         fiveDayForecast(cityName);
         cityInput.value = "";
+        addNewBtn(cityName);
     } else {
         alert("Enter the city name");
     }
@@ -137,16 +148,30 @@ const fiveDayForecast = (cityName) => {
 // search button
 searchBtn.addEventListener("click", formSubmitHandler);
 
-// weather for different buttons with cities
-cityBtn.forEach((button) => {
-    button.addEventListener("click", function () {
-        event.preventDefault();
+// weather for different buttons with cities for already created buttons
+// cityBtn.forEach((button) => {
+//     button.addEventListener("click", function () {
+//         event.preventDefault();
 
-        const buttonText = this.textContent;
-        inputCityWeather(buttonText);
+//         console.log("city", this);
 
-        fiveDayForecast(buttonText);
-    });
+//         const buttonText = this.textContent;
+//         inputCityWeather(buttonText);
+
+//         fiveDayForecast(buttonText);
+//     });
+// });
+
+// checking
+btnsDiv.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    console.log(event.target);
+
+    const buttonText = event.target.textContent;
+    inputCityWeather(buttonText);
+
+    fiveDayForecast(buttonText);
 });
 
 // checking dayjs
