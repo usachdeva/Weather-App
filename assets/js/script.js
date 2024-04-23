@@ -4,7 +4,8 @@ const cityHeadCard = document.querySelector("#required-city h2");
 const cityTemp = document.querySelector("#city-temp");
 const cityWind = document.querySelector("#city-wind");
 const cityHumidity = document.querySelector("#city-humidity");
-const cityBtn = document.querySelectorAll(".city-btn");
+const cityBtns = document.querySelectorAll(".city-btn");
+// const cityBtn = document.querySelector("");
 const rowDiv = document.querySelector(".row-cols-1");
 const btnsDiv = document.querySelector("#city-buttons");
 
@@ -16,7 +17,7 @@ const addNewBtn = (city) => {
     newBtn.setAttribute("class", "btn btn-secondary my-2 city-btn");
     newBtn.textContent = city;
 
-    btnsDiv.appendChild(newBtn);
+    btnsDiv.prepend(newBtn);
 };
 
 const formSubmitHandler = (event) => {
