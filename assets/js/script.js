@@ -17,7 +17,7 @@ const addNewBtn = (city) => {
     newBtn.setAttribute("class", "btn btn-secondary my-2 city-btn");
     newBtn.textContent = city;
 
-    btnsDiv.prepend(newBtn);
+    btnsDiv.insertBefore(newBtn, btnsDiv.firstChild);
 };
 
 const formSubmitHandler = (event) => {
